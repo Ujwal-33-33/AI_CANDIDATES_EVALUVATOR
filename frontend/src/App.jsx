@@ -42,7 +42,7 @@ export default function App() {
     formData.append("weight_test_la", weightTestLa);
 
     try {
-      const response = await fetch("http://localhost:8000/api/upload", {
+      const response = await fetch("https://ai-candidates-evaluvator.onrender.com/api/upload", {
         method: "POST",
         body: formData,
       });
@@ -57,7 +57,7 @@ export default function App() {
   const handleSendEmail = async (candidate, index) => {
     setSentEmails(prev => ({ ...prev, [index]: 'sending' }));
     try {
-      await fetch("http://localhost:8000/api/send-email", {
+      await fetch("https://ai-candidates-evaluvator.onrender.com/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -80,7 +80,7 @@ export default function App() {
     if (status === 'processing' && taskId) {
       interval = setInterval(async () => {
         try {
-          const res = await fetch(`http://localhost:8000/api/status/${taskId}`);
+          const res = await fetch(`https://ai-candidates-evaluvator.onrender.com/api/status/${taskId}`);
           const data = await res.json();
 
           if (data.status === 'processing') {
