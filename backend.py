@@ -1,4 +1,3 @@
-# namespace std;
 import os
 import uuid
 import smtplib
@@ -54,8 +53,8 @@ class EmailRequest(BaseModel):
     sender_email: str
     app_password: str
     email_message: str
-
-llm = ChatGroq(model="llama-3.3-70b-versatile").with_structured_output(EvaluationOutput)
+GROQ_MODEL = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+llm = ChatGroq(model=GROQ_MODEL).with_structured_output(EvaluationOutput)
 
 def evaluate_candidate(state: EvaluationState):
     print("-> Invoking LLM for evaluation...")
