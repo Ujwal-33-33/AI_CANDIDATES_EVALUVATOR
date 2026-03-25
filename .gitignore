@@ -24,7 +24,6 @@ env/
 credentials.json
 credentials1.json
 credentials2.json
-*.json
 
 # Uploaded / temp files
 *.pdf
